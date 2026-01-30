@@ -1,7 +1,6 @@
 
 from dataclasses import dataclass, field
 
-
 @dataclass
 class Jogador:
     nome: str
@@ -9,10 +8,12 @@ class Jogador:
     palavras_acertadas: list = field(default_factory=list)
 
 
-    def gastar_pontos(self, pontos_gastos: int) -> None:
+    def gastar_pontos(self, pontos_gastos: int) -> bool:
         if pontos_gastos > self.pontos:
-            raise ValueError("Pontos insuficientes")
+            print("Pontos insuficientes!")
+            return False
         self.pontos -= pontos_gastos
+        return True
 
     def ganhar_pontos(self, pontos_ganhos: int) -> None:
         self.pontos += pontos_ganhos
