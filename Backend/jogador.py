@@ -1,37 +1,17 @@
+
+from dataclasses import dataclass, field
+
+
+@dataclass
 class Jogador:
+    nome: str
+    pontos: int
+    palavras_acertadas: list = field(default_factory=list)
 
-    def __init__(self, nome, pontos, lista):
-        self._nome: str = nome
-        self._pontos: int = pontos
-        self._lista = lista
 
-    @property
-    def nome(self) -> str:
-        return self.__nome 
-    
-    @nome.setter
-    def nome(self, nome):
-        if not nome:
-            raise ValueError("Missing name")
-        elif nome.isalnum() :
-            raise ValueError("Nome não pode conter caracteres especias")
-        self._nome = nome 
-    
-    @property
-    def pontos(self) -> int :
-        return self._pontos
-    
-    @pontos.setter
-    def pontos(self, pontos):
-        if pontos <0 :
-            pontos = 0
-        self._pontos = pontos
+    def gastar_pontos(self, pontos_gastos: int) -> None:
+        if pontos_gastos > self.pontos:
+            raise ValueError("Pontos insuficientes")
+        self.pontos -= pontos_gastos
 
-    @property
-    def lista(self):
-        return self._lista
-    
-    @lista.setter
-    def lista(self,lista):
-        self._lista
         
