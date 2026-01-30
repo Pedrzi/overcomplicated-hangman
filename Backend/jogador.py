@@ -14,4 +14,8 @@ class Jogador:
             raise ValueError("Pontos insuficientes")
         self.pontos -= pontos_gastos
 
-        
+    def ganhar_pontos(self, pontos_ganhos: int) -> None:
+        self.pontos += pontos_ganhos
+    
+    def adicionar_palavra_acertada(self, palavra: str) -> None:
+        self.palavras_acertadas.append(palavra)
